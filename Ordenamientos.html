@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordenamientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+        code {
+            display: block;
+            background-color: #002240;
+            color: #ffffff;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #002240;
+        }
+        p {
+            color: #ffffff;
+        }
+        a {
+            color: #f1f1f1;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .container {
+            background-color: #005cad;
+            color:#ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .rounded-img {
+            border-radius: 20%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ordenamientos</h1>
+    <div class="container"> 
+        <h2>Burbuja</h2>
+        <p>
+            Año de creación: El algoritmo de ordenamiento burbuja se desarrolló en la década de 1950.
+        </p>
+        <p>
+            Autor: No se sabe a ciencia cierta quién lo creó, pero las primeras referencias apuntan a Edward H. Friend con el nombre "ordenamiento por intercambio"
+        </p>
+        <p>
+            Tiempo de ejecución: El tiempo de ejecución del ordenamiento burbuja depende del número de elementos en la lista a ordenar, aumentando cuadráticamente con el tamaño 
+        </p>
+        <p>
+            Eficiencia: El ordenamiento burbuja no es eficiente en comparación con otros algoritmos de ordenamiento más avanzados, especialmente para listas grandes. Su rendimiento es pobre y tiende a ser mucho más lento en comparación con algoritmos como Quicksort o merge.
+        </p>
+        <p>
+            Características de la lista: Después de que se aplica el algoritmo de ordenamiento burbuja a una lista, los elementos se reorganizan de forma ascendente (o descendente, dependiendo de la implementación). El elemento más pequeño o grande se va trasladando gradualmente hacia el principio de la lista a medida que se realizan comparaciones y se intercambian elementos.
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def OrdenamientoBurbuja(lista):
+                for i in range(1,len(lista)):
+                    for j in range(0,len(lista)-i):
+                        if lista[j]>lista[j+1]:
+                            k=lista[j+1]
+                            lista[j+1]=lista[j]
+                            lista[j]=k
+                        print(lista)
+        </code></pre>   
+
+        <h2>Seleccion</h2>
+        <p>
+
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def seleccion(lista):
+                for i in range(0,len(lista)-1):
+                    minimo=i
+                    for j in range(i+1,len(lista)):
+                        if lista[minimo]>lista[j]:
+                            minimo=j
+                        aux=lista[minimo]
+                    lista[minimo]=lista[i]
+                    lista[i]=aux
+                print(lista)
+        </code></pre>
+
+        <h2>Insercion</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def insercion(lista):
+                for i in range (1,len(lista)):
+                    v=lista[i]
+                    j=i-1
+                    while j>=0 and lista[j]>v:
+                        lista[j+1]=lista[j]
+                        j=j-1
+                    lista[j+1]=v
+                    print(lista)
+        </code></pre>
+
+        <h2>Shell</h2>
+        <p>
+            Año de creación: El ordenamiento Shell fue propuesto en 1959.
+        </p>
+        <p>
+            Autor: Donald Shell
+        </p>
+        <p>
+            Tiempo de ejecución: El tiempo de ejecución del ordenamiento Shell depende del tamaño de la lista y de la secuencia de brechas utilizada y varía según la secuencia de brechas utilizada. En la práctica suele tener un mejor rendimiento que otros algoritmos de ordenamiento cuadráticos, como el ordenamiento burbuja.
+        </p>
+        <p>
+            Eficiencia: El ordenamiento Shell es conocido por ser más eficiente que los algoritmos cuadráticos tradicionales, como el ordenamiento burbuja. Su eficiencia radica en la aplicación de comparaciones y movimientos de elementos en una serie de subsecuencias, lo que permite acelerar el proceso de ordenamiento. Sin embargo, el ordenamiento Shell no es tan eficiente como algunos de los algoritmos de ordenamiento más avanzados, como Quicksort o merge.
+        </p>
+        <p>
+            Características de la lista: Después de aplicar el algoritmo de ordenamiento Shell a una lista, los elementos se reorganizan en orden ascendente o descendente, dependiendo de la implementación. El algoritmo utiliza una secuencia de brechas para realizar comparaciones y movimientos de elementos a través de diferentes subsecuencias de la lista. A medida que se aplican más pasadas del algoritmo con brechas más pequeñas, los elementos se acercan cada vez más a su posición final en la lista ordenada.
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def Shell(lista):
+                inc=int(len(lista)/2 )
+                while inc>0:
+                    for  i in range(inc,len(lista)):
+                        j=i
+                        temp=lista[i]
+                        while j>=inc and lista[j-inc]>temp:
+                            lista[j]=lista[j-inc]
+                            j=j-inc 
+                        lista[j]=temp
+                    if (inc==2) :
+                        inc=1
+                    else :
+                        inc=int(inc/2.5)
+                print(lista)
+        </code></pre>
+
+        <h2>Quicksort</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def quicksort(lista):
+                if len(lista) == 1 or len(lista) == 0:
+                    return lista
+                else:
+                    pivot = lista[0]
+                    print(pivot)
+                    i = 0
+                    for j in range(len(lista)-1):
+                        if lista[j+1] < pivot:
+                            lista[j+1],lista[i+1] = lista[i+1], lista[j+1]
+                            i += 1
+                    lista[0],lista[i] = lista[i],lista[0]
+                    primera = quicksort(lista[:i])
+                    segunda = quicksort(lista[i+1:])
+                    primera.append(lista[i])   
+                    print(primera + segunda)
+                return (primera + segunda)
+        </code></pre>
+
+        <h2>Radix</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python (utiliza funciones adicionales)</h3>
+        <pre><code>
+            def largo(num):
+                copianum=num
+                if isinstance(copianum,int):
+                    cont=1 if copianum == 0 else 0
+                    while copianum!=0:
+                        copianum=copianum//10
+                        cont+=1
+                    return cont
+                else:
+                    print("no entero")
+
+            def numalist(lista):
+                numa=0
+                for num in lista:
+                    if num>numa:
+                        numa=num
+                return numa
+
+            def radix(lista):
+                numa=numalist(lista)
+                largnum=largo(numa)
+                for i in range(largnum):
+                    list10 = [[]]*10
+                    for num in lista:
+                        digit=(num//(10**i))%10
+                        list10[digit]=list10[digit]+[num]
+                    j=0
+                    for k in list10:
+                        for num in k:
+                            lista[j]=num
+                            j=j+1
+                return lista
+        </code></pre>
+
+        <h2>Shake</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            
+        </code></pre>
+
+        <h2>Merge</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            
+        </code></pre>
+    </div>
+    <h1>Busquedas</h1>
+    <div class="container"> 
+        <h2>Binaria</h2>
+        <p>
+            Año de creación: El algoritmo de búsqueda binaria se popularizó en la década de 1940.
+        </p>
+        <p>
+            Autor: John W. Tukey es reconocido por su contribución al desarrollo de la búsqueda binaria.
+        </p>
+        <p>
+            Tiempo de ejecución: La búsqueda binaria tiene un tiempo de ejecución logarítmico, lo que significa que su eficiencia aumenta a medida que el tamaño de la lista aumenta.
+        </p>
+        <p>
+            Eficiencia: La búsqueda binaria es considerada un algoritmo de búsqueda eficiente debido a su tiempo de ejecución logarítmico. A medida que la lista aumenta de tamaño, la búsqueda binaria puede encontrar un elemento en menos comparaciones en comparación con algoritmos de búsqueda lineal como la búsqueda secuencial.
+        </p>
+        <p>
+            Características de la lista resultante: La búsqueda binaria determina si un elemento específico está presente en la lista ordenada o no. Si el elemento se encuentra en la lista, devuelve la posición o índice en el que se encuentra. En caso contrario, devuelve un valor que indica que el elemento no está presente. Como detalle adicional, es necesario que la lista en la que se va a buscar el elemento esté ordenada, caso contrario hay que ordenarla antes de buscar.
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def busquedaBinaria(lista,item):
+                primero=0
+                ultimo=len(lista)-1
+                encontrado=False
+                while primero <=ultimo and not encontrado:
+                    puntoMedio=(primero+ultimo)//2
+                    if lista[puntoMedio]==item:
+                        encontrado=True
+                    else:
+                        if item< lista[puntoMedio]:
+                            ultimo=puntoMedio-1
+                        else:
+                            primero=puntoMedio+1
+                print (encontrado)
+        </code></pre>
+
+        <h2>Secuencial</h2>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            
+        </p>
+        <h3>Intregracion en python</h3>
+        <pre><code>
+            def busquedaSecuencial(lista,nume):
+                posicion=0
+                encontrado=False
+                while posicion < len(lista) and not encontrado:
+                    if lista[posicion]== nume:
+                        encontrado = True
+                    else:
+                        posicion = posicion+1
+                print (encontrado)
+        </code></pre>
+    </div>
+    <h2>Referencias</h2>
+    <div class="container">
+        <ul>
+            <li><a href="http://analizaralgoritmos.blogspot.com/2013/03/metodo-burbuja.html?m=1">Burbuja</a></li>
+            <li><a href="">Seleccion</a></li>
+            <li><a href="">Insercion</a></li>
+            <li><a href="https://es.wikipedia.org/wiki/Ordenamiento_Shell">Shell</a></li>
+            <li><a href="http://lwh.free.fr/pages/algo/tri/tri_shell_es.html#:~:text=La%20ordenaci%C3%B3n%20de%20Shell%20pertenece,una%20segmentaci%C3%B3n%20entre%20los%20datos.">Shell</a></li>
+            <li><a href="">Quicksort</a></li>
+            <li><a href="">Radix</a></li>
+            <li><a href="">Shake</a></li>
+            <li><a href="">Merge</a></li>
+            <li><a href="">Busqueda Binaria</a></li>
+            <li><a href="https://es.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search">Busqueda Binaria</a></li>
+            <li><a href="https://numerentur.org/busqueda/#:~:text=La%20primera%20vez%20que%20se,de%20aqu%C3%AD%20surgen%20distintas%20versiones.">Busqueda Secuencial</a></li>
+        </ul>
+    </div>
+</body> 
+</html>
