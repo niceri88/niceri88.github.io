@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ordenamientos</title>
+    <title>Ordenamientos | Yeri Porras</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .rounded-img {
-            border-radius: 20%;
+            border-radius: 2%;
         }
     </style>
 </head>
@@ -61,6 +61,8 @@
         <p>
             Características de la lista: Después de que se aplica el algoritmo de ordenamiento burbuja a una lista, los elementos se reorganizan de forma ascendente (o descendente, dependiendo de la implementación). El elemento más pequeño o grande se va trasladando gradualmente hacia el principio de la lista a medida que se realizan comparaciones y se intercambian elementos.
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\burbuja.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def OrdenamientoBurbuja(lista):
@@ -89,6 +91,8 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\seleccion.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def seleccion(lista):
@@ -119,6 +123,8 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\insercion.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def insercion(lista):
@@ -148,6 +154,8 @@
         <p>
             Características de la lista: Después de aplicar el algoritmo de ordenamiento Shell a una lista, los elementos se reorganizan en orden ascendente o descendente, dependiendo de la implementación. El algoritmo utiliza una secuencia de brechas para realizar comparaciones y movimientos de elementos a través de diferentes subsecuencias de la lista. A medida que se aplican más pasadas del algoritmo con brechas más pequeñas, los elementos se acercan cada vez más a su posición final en la lista ordenada.
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\shell.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def Shell(lista):
@@ -183,6 +191,8 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\quicksort.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def quicksort(lista):
@@ -220,6 +230,8 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\radix.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python (utiliza funciones adicionales)</h3>
         <pre><code>
             def largo(num):
@@ -272,9 +284,23 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\shake.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
-            
+            def shake_sort(lista):
+            left = 0
+            right = len(lista) - 1
+            while left <= right:
+                for i in range(left, right):
+                    if lista[i] > lista[i + 1]:
+                        lista[i], lista[i + 1] = lista[i + 1], lista[i]
+                right -= 1
+                for i in range(right, left, -1):
+                    if lista[i - 1] > lista[i]:
+                        lista[i], lista[i - 1] = lista[i - 1], lista[i]
+                left += 1
+            return lista
         </code></pre>
 
         <h2>Merge</h2>
@@ -293,9 +319,31 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\merge.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
-            
+            def merge_sort(lista):
+                if len(lista) < 2:
+                    return lista
+                else:
+                    middle = len(lista) // 2
+                    right = merge_sort(lista[:middle])
+                    left = merge_sort(lista[middle:])
+                    return merge(right, left)
+            def merge(lista1, lista2):
+                i, j = 0, 0
+                result = []
+                while(i < len(lista1) and j < len(lista2)):
+                    if (lista1[i] < lista2[j]):
+                        result.append(lista1[i])
+                        i += 1
+                    else:
+                        result.append(lista2[j])
+                        j += 1
+                result += lista1[i:]
+                result += lista2[j:]
+                return result
         </code></pre>
     </div>
     <h1>Busquedas</h1>
@@ -316,6 +364,8 @@
         <p>
             Características de la lista resultante: La búsqueda binaria determina si un elemento específico está presente en la lista ordenada o no. Si el elemento se encuentra en la lista, devuelve la posición o índice en el que se encuentra. En caso contrario, devuelve un valor que indica que el elemento no está presente. Como detalle adicional, es necesario que la lista en la que se va a buscar el elemento esté ordenada, caso contrario hay que ordenarla antes de buscar.
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\binaria.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def busquedaBinaria(lista,item):
@@ -350,6 +400,8 @@
         <p>
             
         </p>
+        <h3>Corrida a mano</h3>
+        <img src="media\secuencial.jpg" alt="Corrida" class="rounded-img" width="30%" height="auto">
         <h3>Intregracion en python</h3>
         <pre><code>
             def busquedaSecuencial(lista,nume):
@@ -367,17 +419,18 @@
     <div class="container">
         <ul>
             <li><a href="http://analizaralgoritmos.blogspot.com/2013/03/metodo-burbuja.html?m=1">Burbuja</a></li>
-            <li><a href="">Seleccion</a></li>
-            <li><a href="">Insercion</a></li>
+            <li><a href="http://lwh.free.fr/pages/algo/tri/tri_selection_es.html">Seleccion</a></li>
+            <li><a href="https://juncotic.com/ordenamiento-por-insercion-algoritmos-de-ordenamiento/#:~:text=El%20algoritmo%20de%20ordenamiento%20por%20inserci%C3%B3n%20es%20un%20algoritmo%20de,insert%C3%A1ndolo%20en%20el%20lugar%20correspondiente.">Insercion</a></li>
             <li><a href="https://es.wikipedia.org/wiki/Ordenamiento_Shell">Shell</a></li>
             <li><a href="http://lwh.free.fr/pages/algo/tri/tri_shell_es.html#:~:text=La%20ordenaci%C3%B3n%20de%20Shell%20pertenece,una%20segmentaci%C3%B3n%20entre%20los%20datos.">Shell</a></li>
-            <li><a href="">Quicksort</a></li>
-            <li><a href="">Radix</a></li>
-            <li><a href="">Shake</a></li>
-            <li><a href="">Merge</a></li>
-            <li><a href="">Busqueda Binaria</a></li>
+            <li><a href="https://gsauceda1.wixsite.com/quicksort/historia#:~:text=El%20algoritmo%20Quicksort%20fue%20desarrollado,de%20F%C3%ADsica%20(Reino%20Unido).">Quicksort</a></li>
+            <li><a href="http://radixsort.byethost7.com/?i=1">Radix</a></li>
+            <li><a href="https://slideplayer.es/slide/17459739/">Shake</a></li>
+            <li><a href="https://pythondiario.com/2018/08/ordenamiento-por-mezcla-merge-sort.html">Merge</a></li>
+            <li><a href="https://binarycoffee.dev/post/conociendo-el-ordenamiento-por-mezcla-merge-sort">Merge</a></li>
+            <li><a href="https://numerentur.org/busqueda/#:~:text=La%20primera%20vez%20que%20se,de%20aqu%C3%AD%20surgen%20distintas%20versiones.">Busqueda Binaria</a></li>
             <li><a href="https://es.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search">Busqueda Binaria</a></li>
-            <li><a href="https://numerentur.org/busqueda/#:~:text=La%20primera%20vez%20que%20se,de%20aqu%C3%AD%20surgen%20distintas%20versiones.">Busqueda Secuencial</a></li>
+            <li><a href="http://cidecame.uaeh.edu.mx/lcc/mapa/PROYECTO/libro9/bsqueda_secuencial.html">Busqueda Secuencial</a></li>
         </ul>
     </div>
 </body> 
