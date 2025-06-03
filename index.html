@@ -1,10 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Para papi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carta para Papi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #bbdefb);
+      color: #0d47a1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: none;
+    }
+
+    .login {
+      display: block;
+    }
+
+    h1 {
+      color: #1565c0;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 80%;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      background-color: #1976d2;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-style: italic;
+      color: #1565c0;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-<br>
-<h1>Para papi, cargando...</h1>
+  <!-- Pantalla de inicio de sesión -->
+  <div class="container login" id="login">
+    <h1>Bienvenido</h1>
+    <p>Ingresa tu nombre para continuar:</p>
+    <input type="text" id="nameInput" placeholder="Escribe tu nombre aquí..." />
+    <br />
+    <button onclick="validateName()">Entrar</button>
+  </div>
+
+  <!-- Carta oculta inicialmente -->
+  <div class="container" id="card">
+    <h1>Papi</h1>
+    <h2>Después de tu jornada de vida cristiana</h2>
+    <p>
+      Quiero que sepas lo orgulloso estoy de vos. Sé que esta experiencia ha sido significativa,
+      llena de reflexión, fe y renovación espiritual, pero no solo eso porque tambien sé que es
+      un paso de introspección de tu dia a dia.
+    </p>
+    <p>
+      Espero que esta nueva etapa en tu camino te traiga mucha paz, alegría y sabiduría.
+      Gracias por ser un ejemplo para nosotros y crecer como persona dia a dia.
+    </p>
+    <p class="signature">
+      Con mucho cariño,<br />
+      Tiven
+    </p>
+  </div>
+
+  <script>
+    function validateName() {
+      const input = document.getElementById("nameInput").value.trim().toLowerCase();
+      const validNames = [
+        "yeri",
+        "yeri wilton",
+        "yeri wilton porras",
+        "yeri wilton porras garita",
+        "yeri porras",
+        "yeri porras garita",
+        "wilton",
+        "wilton porras",
+        "wilton porras garita",];
+      if (validNames.includes(input)) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("card").style.display = "block";
+      } else {
+        alert("Nombre incorrecto. Por favor, intenta de nuevo.");
+      }
+    }
+  </script>
 </body>
 </html>
