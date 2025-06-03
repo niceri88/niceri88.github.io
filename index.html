@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carta para Papi</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -16,6 +17,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .container {
@@ -27,6 +29,8 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       text-align: center;
       display: none;
+      position: relative;
+      z-index: 2;
     }
 
     .login {
@@ -68,6 +72,19 @@
       color: #1565c0;
     }
 
+    #downloadBtn {
+      margin-top: 20px;
+      background-color: #0d47a1;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
     @media (max-width: 600px) {
       .container {
         padding: 15px;
@@ -80,6 +97,9 @@
   </style>
 </head>
 <body>
+  <!-- Lienzo de fuegos artificiales -->
+  <canvas id="fireworksCanvas"></canvas>
+
   <!-- Pantalla de inicio de sesión -->
   <div class="container login" id="login">
     <h1>Bienvenido</h1>
@@ -95,38 +115,95 @@
     <h2>Después de tu jornada de vida cristiana</h2>
     <p>
       Quiero que sepas lo orgulloso estoy de vos. Sé que esta experiencia ha sido significativa,
-      llena de reflexión, fe y renovación espiritual, pero no solo eso porque tambien sé que es
-      un paso de introspección de tu dia a dia.
+      llena de reflexión, fe y renovación espiritual, pero no solo eso porque también sé que es
+      un paso de introspección de tu día a día.
     </p>
     <p>
       Espero que esta nueva etapa en tu camino te traiga mucha paz, alegría y sabiduría.
-      Gracias por ser un ejemplo para nosotros y crecer como persona dia a dia.
+      Gracias por ser un ejemplo para nosotros y crecer como persona día a día.
     </p>
     <p class="signature">
       Con mucho cariño,<br />
       Tiven
     </p>
+    <button id="downloadBtn" onclick="downloadPDF()">Descargar como PDF</button>
   </div>
 
   <script>
+    function normalize(str) {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    }
+
     function validateName() {
-      const input = document.getElementById("nameInput").value.trim().toLowerCase();
+      const input = normalize(document.getElementById("nameInput").value);
       const validNames = [
-        "yeri",
-        "yeri wilton",
-        "yeri wilton porras",
-        "yeri wilton porras garita",
-        "yeri porras",
-        "yeri porras garita",
-        "wilton",
-        "wilton porras",
-        "wilton porras garita",];
+        "yeri", "yeri wilton", "yeri wilton porras", "yeri wilton porras garita",
+        "yeri porras", "yeri porras garita", "wilton", "wilton porras", "wilton porras garita"
+      ].map(normalize);
+
       if (validNames.includes(input)) {
         document.getElementById("login").style.display = "none";
         document.getElementById("card").style.display = "block";
+        startFireworks();
       } else {
         alert("Nombre incorrecto. Por favor, intenta de nuevo.");
       }
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById("card");
+      html2pdf().from(element).save("Carta_para_Papi.pdf");
+    }
+
+    // Fuegos artificiales simples con canvas
+    function startFireworks() {
+      const canvas = document.getElementById('fireworksCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let particles = [];
+
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createFirework() {
+        const x = random(100, canvas.width - 100);
+        const y = random(50, canvas.height / 2);
+        const colors = ['#ff5252', '#ff4081', '#7c4dff', '#448aff', '#18ffff', '#69f0ae', '#ffff00'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            x: x,
+            y: y,
+            dx: random(-3, 3),
+            dy: random(-3, 3),
+            life: 100,
+            color: color
+          });
+        }
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.life--;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          if (p.life <= 0) particles.splice(i, 1);
+        });
+
+        if (Math.random() < 0.05) createFirework();
+        requestAnimationFrame(update);
+      }
+
+      update();
+      setTimeout(() => { canvas.style.display = 'none'; }, 8000); // oculta fuegos tras 8 segundos
     }
   </script>
 </body>
